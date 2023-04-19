@@ -9,7 +9,7 @@ const ProfileInfo = ({profile, status, updateStatus}) => {
     return (
         <div>
             <div>
-                <img className={style.photo} src={!profile.photos.large ? "/img/photo.jpg" : profile.photos.large} alt="Avatar"/>
+                <img className={style.photo} src={!profile.photos.large ? "img/photo.jpg" : profile.photos.large} alt="Avatar"/>
             </div>
             <div>
                 <p>{profile.fullName}</p>
