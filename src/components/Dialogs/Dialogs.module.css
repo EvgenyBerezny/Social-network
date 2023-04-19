@@ -1,0 +1,52 @@
+.padding {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+#h1 {
+    font-size: 36px;
+    margin-left: -2px;
+}
+
+.chats {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.dialogs {
+    margin-top: 15px;
+    width: 30%;
+}
+
+.messages {
+    width: 70%;
+    margin-left: 10px;
+    border: 1px solid rgba(39, 79, 64, .2);
+    padding: 15px;
+}
+
+.area {
+    border: 1px solid rgba(39, 79, 64, .2);
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border-radius: 3%;
+    outline: none;
+    resize: none;
+
+}
+
+.addMessage {
+    border: none;
+    border-radius: 5%;
+    background-color: white;
+}
+
+.newMessage {
+    display: flex;
+}
+
+.send {
+    filter: alpha(Opacity=50);
+    opacity: 0.6;
+    width: 30px;
+}
