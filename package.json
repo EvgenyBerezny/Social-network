@@ -2,6 +2,7 @@
   "name": "app-test",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://evgenyberezny.github.io/Social-network/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -16,17 +17,18 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.4",
     "react-scripts": "5.0.1",
-    "react-test-renderer": "^18.2.0",
     "redux": "^4.2.0",
     "redux-form": "^8.3.9",
     "redux-thunk": "^2.4.2",
+    "reselect": "^4.1.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   },
   "jest": {
     "moduleNameMapper": {
@@ -50,5 +52,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0",
+    "react-test-renderer": "^18.2.0"
   }
 }
