@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css?family=Lora:400,400i,700");
+
+body {
+  font-family: Lora, sans-serif;
+  color: #3F5057;
+  height: 91vh;
+}
+
+.app-wrapper {
+  display: grid;
+  grid-template-areas: 
+  "header header header"
+  "nav cont cont";
+  grid-template-columns: 3fr 10fr;
+  grid-template-rows: 60px 1fr;
+  grid-gap: 10px;
+}
+
+.app-common-style {
+  grid-area: cont;
+  background-color: white;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+/*.link {*/
+/*  color: #3F5057;*/
+/*}*/
+
+/*.active {*/
+/*  color: #639886;*/
+/*}*/
+
+
+
+
+

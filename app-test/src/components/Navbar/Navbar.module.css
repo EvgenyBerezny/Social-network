@@ -1,0 +1,18 @@
+.nav {
+    grid-area: nav;
+    background-color: #ADCCCF;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.nav a {
+    text-decoration: none !important;
+}
+
+.link {
+    color: #3F5057;
+}
+
+.active {
+    color: cornflowerblue;
+}

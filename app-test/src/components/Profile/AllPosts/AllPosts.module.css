@@ -1,0 +1,18 @@
+.newPost {
+  display: flex;
+  
+}
+
+.area {
+  border: 1px solid grey;
+  border-radius: 3%;
+  margin-left: 5px;
+  outline: none;
+  resize: none;
+}
+
+.addPost {
+  border: none;
+  border-radius: 5%;
+  background-color: #ADCCCF;
+}
