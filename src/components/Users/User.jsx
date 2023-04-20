@@ -1,6 +1,7 @@
 import style from "./Users.module.css";
 import {NavLink} from "react-router-dom";
 import React from "react";
+import defaultUserPhoto from "../../images/photo.jpg"
 
 let User = ({user, followingInProgress, unfollow, follow}) => {
     return (
@@ -8,7 +9,7 @@ let User = ({user, followingInProgress, unfollow, follow}) => {
             <span>
                 <div>
                     <NavLink to={'/profile/' + user.id}>
-                        <img src={user.photos.small != null ? user.photos.small : "img/photo.jpg"}
+                        <img src={user.photos.small != null ? user.photos.small : defaultUserPhoto}
                              className={style.ava} alt={"UserPhoto"}/>
                     </NavLink>
                 </div>

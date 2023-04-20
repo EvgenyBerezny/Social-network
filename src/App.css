@@ -25,6 +25,11 @@ a {
   text-decoration: none !important;
 }
 
+button {
+  font-family: Lora, sans-serif;
+  color: #3F5057;
+}
+
 /*.link {*/
 /*  color: #3F5057;*/
 /*}*/

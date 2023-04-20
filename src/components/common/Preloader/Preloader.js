@@ -1,9 +1,10 @@
 import React from "react";
+import preloaderImg from "../../../images/Spinner-3.gif";
 
 
 let Preloader = (props) => {
     return (
-        <img src="/img/Spinner-3.gif" alt="Loading..."/>
+        <img src={preloaderImg} alt="Loading..."/>
     )
 }
 
