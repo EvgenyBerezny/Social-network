@@ -33,6 +33,18 @@ export const profileAPI = {
     updateStatus(status) {
         return instanse.put(`profile/status`, {status: status});
     },
+    savePhoto(photoFile) {
+        let formData = new FormData();
+        formData.append("image", photoFile)
+        return instanse.put(`profile/photo`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+    },
+    saveProfile(profile) {
+        return instanse.put(`profile`, profile);
+    },
 }
 
 export const authAPI = {

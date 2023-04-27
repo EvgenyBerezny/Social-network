@@ -30,7 +30,7 @@ const AllPosts = React.memo(props => {
     return (
         <div className={style.main_cont}>
             <div>
-                Posts:
+                <b>Posts: </b>
                 <AddNewPostFormRedux onSubmit={onAddPost}/>
                 <div>
                     {postEl}

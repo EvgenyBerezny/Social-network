@@ -2,35 +2,74 @@ import style from './ProfileInfo.module.css';
 import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import defaultUserPhoto from "../../../images/photo.jpg"
+import {useState} from "react";
+import Contact from "../ProfileDataForm/Contacts";
+import ProfileReduxForm from "../ProfileDataForm/ProfileDataForm";
 
-const ProfileInfo = ({profile, status, updateStatus}) => {
+const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile}) => {
+
+    let [editMode, setEditMode] = useState(false);
+
+
     if (!profile) {
-        return <Preloader />
+        return <Preloader/>
     }
-    return (
-        <div>
+
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files.length) {
+            savePhoto(e.target.files[0]);
+        }
+    }
+
+    const onSubmit = (formData) => {
+        console.log(formData)
+        saveProfile(formData);
+        setEditMode(false);
+    }
+    console.log(profile);
+    return (<>
             <div>
-                <img className={style.photo} src={!profile.photos.large && defaultUserPhoto} alt="Avatar"/>
+                <img className={style.photo} src={profile.photos.large || defaultUserPhoto} alt="mainPhoto"/>
+                {isOwner &&
+                    <input type={"file"} name="avatar" accept="image/png, image/jpeg" onChange={onMainPhotoSelected}/>}
             </div>
-            <div>
-                <p>{profile.fullName}</p>
-                <ProfileStatusWithHooks status={status}
-                               updateStatus={updateStatus}/>
-                <p>About Me:</p>
-                <p>{profile.aboutMe}</p>
-                <p>{profile.lookingForAJob ? "В поиске работы" :"Не ищу работы"}</p>
-                <p>{profile.lookingForAJobDescription}</p>
-            </div>
-            <div>
-                <div>
-                    vk: {profile.contacts.vk}
-                </div>
-                <div>
-                    youtube: {profile.contacts.youtube ? "profile.contacts.youtube" : "Нет аккаунта"}
-                </div>
-            </div>
-        </div>
+            <ProfileStatusWithHooks status={status}
+                                    updateStatus={updateStatus}/>
+
+            { editMode
+                ? <ProfileReduxForm  profile={profile} initialValues={profile} onSubmit={onSubmit}/>
+                : <ProfileData toEditMode={() => setEditMode(true)} profile={profile} isOwner={isOwner}/>}
+
+    </>
+
     )
 }
+
+
+
+const ProfileData = ({profile, isOwner,toEditMode}) => {
+    return <div>
+        { isOwner && <div><button onClick={toEditMode}>edit</button></div>}
+        <div>
+            <div><b>Full name: </b> {profile.fullName}</div>
+
+            <div><b>About Me:</b></div>
+            <div>{profile.aboutMe}</div>
+            <div><b>Looking for a job: </b>{profile.lookingForAJob ? "Yes" : "No"}</div>
+            <div>
+                <b>My skills:</b>
+            </div>
+            <div>{profile.lookingForAJobDescription}</div>
+        </div>
+        <div>
+            <b>Contacts: </b> {Object.keys(profile.contacts).map(key => {
+            return <Contact contactType={key} contactValue={profile.contacts.key}/>
+        })}
+        </div>
+
+    </div>
+}
+
+
 
 export default ProfileInfo;

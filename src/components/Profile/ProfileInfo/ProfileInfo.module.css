@@ -1,7 +1,11 @@
 .photo {
     border-radius: 50%;
-    width: 45px;
-    height: 45px;
+    width: 90px;
+    height: 90px;
     border: 1px solid grey;
+}
+
+.contact {
+    padding-left: 10px;
 }
 
