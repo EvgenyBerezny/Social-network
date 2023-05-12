@@ -1,0 +1,9 @@
+.contact {
+    border: none;
+}
+
+.formSummaryError {
+    border: 1px #8d2626 solid;
+    padding: 5px;
+    color: brown;
+}

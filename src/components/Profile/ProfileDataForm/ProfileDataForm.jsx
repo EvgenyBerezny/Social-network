@@ -1,16 +1,20 @@
 import {Field, reduxForm} from "redux-form";
 import {FormsControl} from "../../common/FormsControls/FormsControls";
 import {maxLengthCreator, requiredField} from "../../../utilits/validator/validators";
+import style from './ProfileDataForm.module.css';
 // import Contact from "./Contacts";
 
 const maxLength40 = maxLengthCreator(40);
 
-const ProfileDataForm = ({handleSubmit, profile}) => {
+const ProfileDataForm = ({handleSubmit, profile, error}) => {
     return <form onSubmit={handleSubmit}>
         <div>
             <button>Save
             </button>
         </div>
+        {error && <div className={style.formSummaryError}>
+            {error}
+        </div>}
         <div>
             <div><b>Full name: </b> <Field component={FormsControl} name={"fullName"}
                                            validate={[requiredField, maxLength40]} placeholder={"Full name"}
@@ -30,18 +34,22 @@ const ProfileDataForm = ({handleSubmit, profile}) => {
                 <Field component={FormsControl} name={"lookingForAJobDescription"}
                        validate={[requiredField, maxLength40]} placeholder={"My skills"} elementType={"textarea"}/>
             </div>
-        {/*</div>*/}
-        {/*<div>*/}
-        {/*    <b>Contacts: </b> {Object.keys(profile.contacts).map(key => {*/}
-        {/*    return <Contact contactType={key} contactValue={profile.contacts.key}/>*/}
-        {/*})}*/}
+        </div>
+        <div>
+            <b>Contacts: </b> {Object.keys(profile.contacts).map(key => {
+            return <div key={key} className={style.contact}>
+                <b>
+                    {key} : <Field component={FormsControl} name={"contacts." + key}
+                                   placeholder={"Enter your " + key} elementType={"input"}/>
+                </b>
+            </div>
+        })}
         </div>
 
     </form>
 }
 
 const ProfileReduxForm = reduxForm({
-    form: 'edit-profile',
-    enableReinitialize: true
+    form: 'edit-profile'
 })(ProfileDataForm)
 export default ProfileReduxForm;

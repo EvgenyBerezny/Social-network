@@ -3,7 +3,7 @@ import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import defaultUserPhoto from "../../../images/photo.jpg"
 import {useState} from "react";
-import Contact from "../ProfileDataForm/Contacts";
+// import Contact from "../ProfileDataForm/Contacts";
 import ProfileReduxForm from "../ProfileDataForm/ProfileDataForm";
 
 const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile}) => {
@@ -22,11 +22,14 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
     }
 
     const onSubmit = (formData) => {
-        console.log(formData)
-        saveProfile(formData);
-        setEditMode(false);
+        saveProfile(formData).then(
+            () => {
+                setEditMode(false);
+            }
+        )
+
     }
-    console.log(profile);
+
     return (<>
             <div>
                 <img className={style.photo} src={profile.photos.large || defaultUserPhoto} alt="mainPhoto"/>
@@ -63,13 +66,16 @@ const ProfileData = ({profile, isOwner,toEditMode}) => {
         </div>
         <div>
             <b>Contacts: </b> {Object.keys(profile.contacts).map(key => {
-            return <Contact contactType={key} contactValue={profile.contacts.key}/>
+            return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
         })}
         </div>
 
     </div>
 }
 
+const Contact = ({contactTitle, contactValue}) => {
+    return <div className={style.contact}><b>{contactTitle} :</b> {contactValue}</div>
+}
 
 
 export default ProfileInfo;
